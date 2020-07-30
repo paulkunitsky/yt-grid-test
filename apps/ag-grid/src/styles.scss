@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../../../node_modules/@ag-grid-community/core/dist/styles/ag-grid.scss";
+@import "../../../node_modules/@ag-grid-community/core/dist/styles/ag-theme-balham/sass/ag-theme-balham-mixin.scss";
+
+$app-font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+.ag-theme-balham {
+  @include ag-theme-balham();
+}
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: #ececec;
+  font: $app-font;
+
+  .ag-theme-balham .ag-status-bar {
+    padding: 5px 10px;
+    background: #f5f7f7;
+    color: #000;
+  }
+}
+
+button {
+  background: #fff;
+  box-shadow: none;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: #e2e2e2;
+  }
+}
+
+.ag-status-bar {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+
+app-videos-grid-shell {
+  .ag-cell {
+    border-right-color: var(--ag-header-column-separator-color, rgba(189, 195, 199, 0.5)) !important;
+    white-space: normal !important;
+    line-height: 20px !important;
+
+    &:last-child {
+      border-right-color: transparent !important;
+    }
+  }
+}

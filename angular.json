@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "projects": {
+    "ag-grid": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/ag-grid",
+      "sourceRoot": "apps/ag-grid/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ag-grid",
+            "index": "apps/ag-grid/src/index.html",
+            "main": "apps/ag-grid/src/main.ts",
+            "polyfills": "apps/ag-grid/src/polyfills.ts",
+            "tsConfig": "apps/ag-grid/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/ag-grid/src/favicon.ico",
+              "apps/ag-grid/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "apps/ag-grid/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ag-grid/src/environments/environment.ts",
+                  "with": "apps/ag-grid/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "100kb",
+                  "maximumError": "120kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ag-grid:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ag-grid:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ag-grid:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ag-grid/tsconfig.app.json",
+              "apps/ag-grid/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ag-grid/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ag-grid/jest.config.js",
+            "tsConfig": "apps/ag-grid/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/ag-grid/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ag-grid-e2e": {
+      "root": "apps/ag-grid-e2e",
+      "sourceRoot": "apps/ag-grid-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ag-grid-e2e/cypress.json",
+            "tsConfig": "apps/ag-grid-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ag-grid:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ag-grid:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/ag-grid-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/ag-grid-e2e/**"]
+          }
+        }
+      }
+    },
+    "yt-api": {
+      "projectType": "library",
+      "root": "libs/yt-api",
+      "sourceRoot": "libs/yt-api/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/yt-api/tsconfig.lib.json",
+              "libs/yt-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/yt-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/yt-api/jest.config.js",
+            "tsConfig": "libs/yt-api/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/yt-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "yt-mock-api": {
+      "projectType": "library",
+      "root": "libs/yt-mock-api",
+      "sourceRoot": "libs/yt-mock-api/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/yt-mock-api/tsconfig.lib.json",
+              "libs/yt-mock-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/yt-mock-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/yt-mock-api/jest.config.js",
+            "tsConfig": "libs/yt-mock-api/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/yt-mock-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/tsconfig.lib.json",
+              "libs/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "tsConfig": "libs/shared/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "ag-grid-extension": {
+      "projectType": "library",
+      "root": "libs/ag-grid-extension",
+      "sourceRoot": "libs/ag-grid-extension/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ag-grid-extension/tsconfig.lib.json",
+              "libs/ag-grid-extension/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ag-grid-extension/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ag-grid-extension/jest.config.js",
+            "tsConfig": "libs/ag-grid-extension/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ag-grid-extension/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "ag-grid"
+}

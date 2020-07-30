@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ag-grid-workspace/yt-api": ["libs/yt-api/src/index.ts"],
+      "@ag-grid-workspace/yt-mock-api": ["libs/yt-mock-api/src/index.ts"],
+      "@ag-grid-workspace/shared": ["libs/shared/src/index.ts"],
+      "@ag-grid-workspace/ag-grid-extension": [
+        "libs/ag-grid-extension/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
